@@ -109,7 +109,7 @@
             </div>
             <!-- IMAGE -->
             <img
-              src="assets/fotogerente.jpg"
+              src="/assets/fotogerente.jpg"
               loading="lazy"
               alt="#"
               class="ui-image-half-right"
@@ -277,9 +277,8 @@
             </div>
             <!-- IMAGE -->
 
-            
             <img
-              src="assets/fotogerente.jpg"
+              src="/assets/fotogerente.jpg"
               alt="#"
               class="ui-image-half-right"
             />
@@ -504,45 +503,55 @@
           </div>
         </div>
       </section>
-       <!-- Seccion Formulario Campo Email-->
-       <section class="ui-section-form">
+
+      <!-- Seccion Formulario Campo Email-->
+      <section class="ui-section-form">
         <div class="ui-layout-container">
           <h2>Contact Us</h2>
           <form id="contact-form" class="ui-form">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-            <button type="submit" class="ui-component-button ui-component-button-normal ui-component-button-secondary">Submit</button>
+            <input type="email" id="email" name="email" required />
+            <button
+              type="submit"
+              class="ui-component-button ui-component-button-normal ui-component-button-secondary"
+            >
+              Submit
+            </button>
           </form>
           <script>
-            document.getElementById('contact-form').addEventListener('submit', async (event) => {
-              event.preventDefault(); // Evitar que el formulario se envíe de manera tradicional
-              
-              const formData = new FormData(event.target); // Obtener los datos del formulario
-              
-              // Convertir los datos a un objeto JSON
-              const jsonData = {};
-              formData.forEach((value, key) => {
-                jsonData[key] = value;
+            document
+              .getElementById("contact-form")
+              .addEventListener("submit", async (event) => {
+                event.preventDefault(); // Evitar que el formulario se envíe de manera tradicional
+
+                const formData = new FormData(event.target); // Obtener los datos del formulario
+
+                // Convertir los datos a un objeto JSON
+                const jsonData = {};
+                formData.forEach((value, key) => {
+                  jsonData[key] = value;
+                });
+
+                // Enviar los datos al backend
+                const response = await fetch(
+                  "http://localhost:3000/submit-form",
+                  {
+                    // Aquí cambia la URL
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(jsonData),
+                  }
+                );
+
+                // Manejar la respuesta del servidor (opcional)
+                const result = await response.json();
+                console.log(result);
               });
-              
-              // Enviar los datos al backend
-              const response = await fetch('http://localhost:3000/submit-form', { // Aquí cambia la URL
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(jsonData)
-              });
-              
-              // Manejar la respuesta del servidor (opcional)
-              const result = await response.json();
-              console.log(result);
-            });
           </script>
         </div>
       </section>
-      
-      
     </main>
     <footer role="contentinfo" class="ui-section-footer">
       <div class="ui-layout-container">

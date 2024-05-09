@@ -5,20 +5,24 @@ const cors = require('cors');
 const app = express();
 const port = 3000;
 
-// Configurar bodyParser para parsear el cuerpo de las solicitudes POST
+
+// Llamamos a las .env
+require('dotenv').config();
+
+// Parseamos los datos a JSON
 app.use(bodyParser.json());
 app.use(cors());
-// Configurar un endpoint para recibir los datos del formulario
+// Este sera el endpoint al que le pegaremos para consumir los datos
 app.post('/submit-form', (req, res) => {
   const formData = req.body;
 
-  // Configurar nodemailer para enviar el correo electrónico
+  // Para el envio de mails utilzamos la libreria Nodemailer de NPM.
   const transporter = nodemailer.createTransport({
     
     service: 'gmail',
     auth: {
-      user: 'facufr12@gmail.com',
-      pass: 'xirdbbschcmnfrum',
+      user: process.env.USER,
+      pass: process.env.PASS,
     }
   });
 
@@ -40,7 +44,7 @@ app.post('/submit-form', (req, res) => {
   });
 });
 
-// Iniciar el servidor
+// Escuchamos al server
 app.listen(port, () => {
   console.log(`Servidor escuchando en http://localhost:${port}`);
 });

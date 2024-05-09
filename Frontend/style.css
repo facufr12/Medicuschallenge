@@ -360,7 +360,6 @@ input[name="toggle"] {
 .ui-section-form {
   background-color: #f9f9f9;
   padding: 4rem 2rem;
-  border-radius: 10px; /* Agregado: bordes redondeados */
 }
 
 .ui-layout-container {
@@ -394,7 +393,7 @@ input[name="toggle"] {
 .ui-form button[type="submit"] {
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
-  background-color: #000; /* Cambiado: color de fondo negro */
+  background-color: #000000;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -402,8 +401,11 @@ input[name="toggle"] {
 }
 
 .ui-form button[type="submit"]:hover {
-  background-color: #333; /* Cambiado: color de fondo más oscuro al pasar el mouse */
+  background-color: #0c0c0c;
 }
+
+
+
 
 
 
@@ -602,12 +604,15 @@ input[name="toggle"] {
 |
 --------------------------------------------------------------*/
 
-.ui-section-pricing {
-  background-color: var(--ui-color-background-secondary);
-  padding-bottom: 5rem;
-  padding-top: 5rem;
-  text-align: center;
+@media only screen and (max-width: 768px) {
+  .ui-section-pricing {
+    background: linear-gradient(to bottom right, #9e42f5, #00c3ff, #96e7ff);
+    padding-bottom: 5rem;
+    padding-top: 5rem;
+    text-align: center;
+  }
 }
+
 
 .ui-section-pricing__layout {
   justify-content: initial;
