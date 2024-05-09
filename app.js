@@ -24,7 +24,7 @@ app.post('/submit-form', (req, res) => {
 
   const mailOptions = {
     from: 'facufr12@gmail.com',
-    to: 'admin@grupocober.online',
+    to: 'facufr2@hotmail.com',
     subject: 'Nuevo Suscriptor',
     text: `Nuevo suscriptor con email: ${formData.email}`
   };
